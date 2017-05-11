@@ -1,0 +1,43 @@
+﻿<ng-loading-bar></ng-loading-bar>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-4'>
+      <nav-menu></nav-menu>
+    </div>
+    <div class='col-md-8 body-content'>
+      <ng2-toasty></ng2-toasty>
+      <ng2-map center="Cobilandia, Brasil" style="height: 100%;">
+        <directions-renderer [suppressMarkers]="true"
+                             directions-request={{destino}}>
+        </directions-renderer>
+        <marker *ngIf="cidadeOrigem !==''"  position={{cidadeOrigem}}
+              [icon]="{
+             url: 'http://minhaencomenda.azurewebsites.net/dist/img/caixa-closed.png',
+             anchor: [16,16],
+             size: [32,32],
+             scaledSize: [32,32]
+           }">
+      </marker>
+        <marker *ngIf="cidadeOrigem !== cidadeDestino" position={{cidadeDestino}}
+                [icon]="{
+                url: 'http://minhaencomenda.azurewebsites.net/dist/img/caixa-open.png',
+             anchor: [16,16],
+             size: [32,32],
+             scaledSize: [32,32]
+           }">
+        </marker>
+        <marker *ngFor="let posicao of waypoints" position={{posicao.location}}
+                [icon]="{
+                url: 'http://minhaencomenda.azurewebsites.net/dist/img/caixa-closed.png',
+             anchor: [16,16],
+             size: [32,32],
+             scaledSize: [32,32]
+           }">
+        </marker>
+      </ng2-map>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="footer">Desenvolvedor <strong>Mychell Dias</strong>. Contatos: <a target="_blank" href="https://www.facebook.com/Wychell">Facebook</a>,  <a target="_blank" href="https://br.linkedin.com/in/mychell-dias-a6bb36b8">Linkedin</a>         <strong style="float:right">1.0.0 - Beta</strong> </div>
+</div>
+

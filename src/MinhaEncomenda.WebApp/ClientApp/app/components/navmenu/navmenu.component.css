@@ -1,0 +1,123 @@
+﻿li .glyphicon {
+  margin-right: 10px;
+}
+
+.numero-rastreamento-erro {
+  color: #ff4040 !important;
+}
+/* Highlighting rules for nav menu items */
+li.link-active a,
+li.link-active a:hover,
+li.link-active a:focus {
+  background-color: #4189C7;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eee;
+  border: thin solid lightgray;
+  box-shadow: 0px 0px 3px #dfdfdf inset;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border: thin solid gray;
+  border-radius: 10px;
+}
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+  }
+
+/* Keep the nav menu independent of scrolling and on top of other items */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.navbar-header input {
+  height: 45px;
+  margin: 0px 12px;
+  border: none;
+  background-color: #222;
+  font-family: "Dosis", arial, tahoma, verdana;
+  font-weight: 500;
+  font-size: 26px;
+  color: white;
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  /* On small screens, convert the nav menu to a vertical sidebar */
+  .main-nav {
+    height: 100%;
+    width: calc(35% - 20px);
+  }
+
+  .navbar {
+    border-radius: 0px;
+    border-width: 0px;
+    height: 100%;
+  }
+
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-collapse {
+    border-top: 1px solid #444;
+    padding: 0px;
+    overflow-y: auto !important;
+    height: 99% !important;
+  }
+
+  .navbar ul {
+    float: none;
+  }
+
+  .navbar li {
+    float: none;
+    font-size: 15px;
+    margin: 6px;
+  }
+
+    .navbar li a {
+      padding: 10px 16px;
+      border-radius: 4px;
+    }
+
+  .navbar a {
+    /* If a menu item's text is too long, truncate it */
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    position: fixed;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+  }
+}
+

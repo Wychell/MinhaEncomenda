@@ -240,7 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/src/MinhaEncomenda.WebApp
-/src/MinhaEncomenda.WebApp
-/src/MinhaEncomenda.WebApp/ClientApp
-/src/MinhaEncomenda.WebApp/wwwroot/dist
+

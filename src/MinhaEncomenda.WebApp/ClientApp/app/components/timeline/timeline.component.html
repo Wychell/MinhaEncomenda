@@ -1,0 +1,16 @@
+﻿<h1 class="numero-rastreamento">{{numero}}</h1>
+<div id="timeline">
+  <div class="timeline-item" *ngFor="let item of rastreamentos">
+    <div class="timeline-icon">
+      <span *ngIf="item.statusEvento?.toLowerCase().search('entregue') == 7" class="glyphicon glyphicon-ok" aria-hidden="true" style="margin: 4px 5px;"></span>
+      <span *ngIf="item.statusEvento?.toLowerCase().search('encaminhado') == -1" class="glyphicon glyphicon-flag" aria-hidden="true" style="margin: 4px 6px;"></span>
+      <span *ngIf="item.statusEvento?.toLowerCase().search('encaminhado') != -1" class="glyphicon glyphicon-send" aria-hidden="true" style="margin: 4px 3px;"></span>
+    </div>
+    <div class="timeline-content right">
+      <h2>{{item.statusEvento}}</h2>
+      <div id="info">Data: {{item.data}} Horas: {{item.hora}}</div>
+      <p innerHTML="{{item.descricaoEvento}}">
+      </p>
+    </div>
+  </div>
+</div>

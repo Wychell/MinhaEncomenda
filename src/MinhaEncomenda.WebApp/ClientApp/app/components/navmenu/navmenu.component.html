@@ -1,0 +1,11 @@
+﻿<div class='main-nav'>
+  <div class='navbar navbar-inverse'>
+    <div class='navbar-header'>
+      <input type="text" name="name" style="outline: none;" [ngClass]="valor != undefined && valor != null && valor.length == 13? '':'numero-rastreamento-erro'" [(ngModel)]="valor" placeholder="DIGITE O CODIGO DE RASTREIO" />
+    </div>
+    <div class='clearfix'></div>
+    <div class='navbar-collapse collapse'>
+      <timeline [(valor)]=valor></timeline>
+    </div>
+  </div>
+</div>
