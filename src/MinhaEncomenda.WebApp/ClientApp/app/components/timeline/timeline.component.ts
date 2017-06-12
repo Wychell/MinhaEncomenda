@@ -2,7 +2,6 @@
 import { Component, Input, OnChanges, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { EventoServico } from '../../servicos/evento/evento.servico';
-import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
     selector: 'timeline',

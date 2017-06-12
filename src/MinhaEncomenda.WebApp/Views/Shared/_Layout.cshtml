@@ -1,18 +1,20 @@
 ﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-touch-fullscreen" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="default">
-        <title>@ViewData["Title"]</title>
-        <base href="/" />
-        <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
-    </head>
-    <body>
-        @RenderBody()
+<html style="height:100%">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>@ViewData["Title"]</title>
+  <base href="/" />
+  <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+  <link href="~/dist/loadcss.css" rel="stylesheet" />
+  <link href="~/dist/ng2-toasty.css" rel="stylesheet" />
+</head>
+<body style="height:100%">
+  @RenderBody()
 
-        @RenderSection("scripts", required: false)
-    </body>
+  @RenderSection("scripts", required: false)
+</body>
 </html>

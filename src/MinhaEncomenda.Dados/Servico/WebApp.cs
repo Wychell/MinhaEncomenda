@@ -27,7 +27,10 @@ namespace MinhaEncomenda.Dados.Servico
                 {
                     var response = await cliente.PostAsync(url, ParametrosPost(codigo));
                     if (response.IsSuccessStatusCode)
-                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(), new IsoDateTimeConverter { Culture = new System.Globalization.CultureInfo("pt-BR") });
+                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(), new IsoDateTimeConverter
+                        {
+                            Culture = new System.Globalization.CultureInfo("pt-BR")
+                        });
 
                     return default(T);
 

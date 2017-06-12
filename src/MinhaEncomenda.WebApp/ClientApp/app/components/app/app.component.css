@@ -5,3 +5,34 @@
   }
 }
 
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  z-index: 1;
+}
+
+  .footer #vensao {
+    float: right;
+  }
+
+@media only screen and (max-width: 464px) {
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+    z-index: 1;
+  }
+
+    .footer #vensao {
+      float: none;
+    }
+}
