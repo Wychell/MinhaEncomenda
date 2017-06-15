@@ -1,12 +1,15 @@
 ﻿
 import { Component, Input, OnChanges, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import { EventoServico } from '../../servicos/evento/evento.servico';
+import { EventoServico } from '../../servicos/evento.servico';
+import { RastreamentoServico } from '../../servicos/rastreamento.servico'
+import { MensagemServico } from '../../servicos/mensagem.servico';
 
 @Component({
     selector: 'timeline',
     template: require('./timeline.component.html'),
-    styles: [require('./timeline.component.css')]
+    styles: [require('./timeline.component.css')],
+    providers: [RastreamentoServico, EventoServico, { provide: 'IMensagemServico', useClass: MensagemServico }]
 
 })
 
@@ -18,7 +21,7 @@ export class TimelineComponent implements OnChanges {
     @Input() valor: string;
     public toastOptions: any;
 
-    constructor(http: Http, private evento: EventoServico, @Inject('IMensagemServico') private mensagem: IMensagemServico) {
+    constructor(http: Http, private evento: EventoServico, @Inject('IMensagemServico') private mensagem: IMensagemServico, private rastreamentoServico: RastreamentoServico) {
         this.http = http;
 
         // Add see all possible types in one shot
@@ -33,11 +36,12 @@ export class TimelineComponent implements OnChanges {
     }
 
     public buscarDados() {
-        this.http.get(`/api/Rastreamento/${this.valor}`).subscribe(data => {
-            this.rastreamentos = data.json();
-            this.numero = this.rastreamentos[0].numero;
-            this.evento.emissor.emit(this.rastreamentos);
-        },
+        this.rastreamentoServico
+            .obterRestreamento(this.valor).subscribe(data => {
+                this.rastreamentos = data.json();
+                this.numero = this.rastreamentos[0].numero;
+                this.evento.emissor.emit(this.rastreamentos);
+            },
             (retorno) => {
                 this.mensagem.mostra(retorno.json().codigo), this.numero = ""
             });

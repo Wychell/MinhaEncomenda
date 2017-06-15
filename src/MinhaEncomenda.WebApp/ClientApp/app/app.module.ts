@@ -8,10 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { Ng2MapModule } from 'ng2-map';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { EventoServico } from './servicos/evento/evento.servico';
 import { ToastyModule } from 'ng2-toasty';
-import { MensagemServico } from './servicos/mensagem/mensagem.servico';
 import { NgLoadingBarModule } from 'ng-loading-bar';
+import { ApiServico } from "./servicos/api.servico"
 
 
 @NgModule({
@@ -37,7 +36,7 @@ import { NgLoadingBarModule } from 'ng-loading-bar';
         HomeComponent,
         TimelineComponent
     ],
-    providers: [EventoServico, { provide: 'IMensagemServico', useClass: MensagemServico }]
+    providers: [ApiServico]
 })
 export class AppModule {
 }

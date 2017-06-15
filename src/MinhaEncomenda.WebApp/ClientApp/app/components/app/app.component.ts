@@ -1,12 +1,14 @@
 ﻿import { Component, ViewChild } from '@angular/core';
-import { EventoServico } from '../../servicos/evento/evento.servico';
+import { EventoServico } from '../../servicos/evento.servico';
 import { DirectionsRenderer } from 'ng2-map';
 
 
 @Component({
     selector: 'app',
     template: require('./app.component.html'),
-    styles: [require('./app.component.css')]
+    styles: [require('./app.component.css')],
+    providers: [EventoServico]
+
 })
 export class AppComponent {
     @ViewChild(DirectionsRenderer) directionsRendererDirective: DirectionsRenderer;
