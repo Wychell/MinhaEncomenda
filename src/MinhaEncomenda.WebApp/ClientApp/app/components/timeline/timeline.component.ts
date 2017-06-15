@@ -39,16 +39,17 @@ export class TimelineComponent implements OnChanges {
     public buscarDados() {
         this.rastreamentoServico
             .obterRestreamento(this.valor).subscribe(data => {
-                this.rastreamentos = data.json();
+                this.rastreamentos = data;
                 this.numero = this.rastreamentos[0].numero;
                 this.evento.emissor.emit(this.rastreamentos);
             },
             (retorno) => {
-                this.mensagem.mostra(retorno.json().codigo);
+                this.mensagem.mostra(retorno.codigo);
                 this.numero = ""
                 this.rastreamentos = [];
                 this.evento.emissor.emit(this.rastreamentos);
             });
+
     }
 }
 
