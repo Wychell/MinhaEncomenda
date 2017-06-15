@@ -12,25 +12,30 @@ export class AppComponent {
     @ViewChild(DirectionsRenderer) directionsRendererDirective: DirectionsRenderer;
     private rastreamento: Rastreamento[];
     private cidades: string[];
-    private cidadeOrigem: string = "";
-    private cidadeDestino: string = "";
+    private cidadeOrigem: string = "Cobilandia";
+    private cidadeDestino: string = "Cobilandia";
     private destino = <any>{ origin: this.cidadeOrigem, destination: this.cidadeDestino, travelMode: "DRIVING" };
-    private waypoints: any;
+    private waypoints = <any>[];
 
     constructor(private evento: EventoServico) {
         evento.emissor.subscribe(
             rastro => {
-                this.cidades = this.filtrarCidades(rastro);
-                this.cidadeDestino = "";
-                this.cidadeOrigem = "";
-                this.waypoints = [];
-                if (rastro[0].statusEvento.toLowerCase().search("entregue") == 7) {
-                    this.destino = this.preparaDestino(this.cidades);
+                if (rastro.length == 0) {
+                    this.limparMapa();
                 } else {
-                    this.cidadeOrigem = this.cidades[0];
-                    this.cidadeDestino = this.cidadeOrigem;
-                    this.destino = {
-                        origin: this.cidadeOrigem, destination: this.cidadeDestino, travelMode: "DRIVING"
+
+                    this.cidades = this.filtrarCidades(rastro);
+                    this.cidadeDestino = "";
+                    this.cidadeOrigem = "";
+                    this.waypoints = [];
+                    if (rastro[0].statusEvento.toLowerCase().search("entregue") == 7) {
+                        this.destino = this.preparaDestino(this.cidades);
+                    } else {
+                        this.cidadeOrigem = this.cidades[0];
+                        this.cidadeDestino = this.cidadeOrigem;
+                        this.destino = {
+                            origin: this.cidadeOrigem, destination: this.cidadeDestino, travelMode: "DRIVING"
+                        }
                     }
                 }
                 this.directionsRendererDirective.showDirections(this.destino);
@@ -38,6 +43,9 @@ export class AppComponent {
         );
     }
 
+    private limparMapa() {
+        this.destino = <any>{ origin: "Cobilandia", destination: "Cobilandia", travelMode: "DRIVING", waypoints: [] };
+    }
     private filtrarCidades(data) {
         this.rastreamento = data.filter(x => x.cidade !== "" && x.cidade.toLowerCase().search("bra") != 0 && x.cidade.toLowerCase().search("fis") != 0)
         return this.rastreamento.map(x => x.cidade).filter((v, i, self) => self.indexOf(v) === i);

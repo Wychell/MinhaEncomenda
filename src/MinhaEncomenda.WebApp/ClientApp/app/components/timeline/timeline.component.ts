@@ -44,7 +44,10 @@ export class TimelineComponent implements OnChanges {
                 this.evento.emissor.emit(this.rastreamentos);
             },
             (retorno) => {
-                this.mensagem.mostra(retorno.json().codigo), this.numero = ""
+                this.mensagem.mostra(retorno.json().codigo);
+                this.numero = ""
+                this.rastreamentos = [];
+                this.evento.emissor.emit(this.rastreamentos);
             });
     }
 }
