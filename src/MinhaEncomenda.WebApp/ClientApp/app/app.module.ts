@@ -13,7 +13,8 @@ import { NgLoadingBarModule } from 'ng-loading-bar';
 import { ApiServico } from "./servicos/api.servico"
 import { EventoServico } from './servicos/evento.servico';
 import { MensagemServico } from './servicos/mensagem.servico';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 
 @NgModule({
