@@ -7,8 +7,6 @@ import { DirectionsRenderer } from 'ng2-map';
     selector: 'app',
     template: require('./app.component.html'),
     styles: [require('./app.component.css')],
-    providers: [EventoServico]
-
 })
 export class AppComponent {
     @ViewChild(DirectionsRenderer) directionsRendererDirective: DirectionsRenderer;

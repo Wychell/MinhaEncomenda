@@ -1,15 +1,16 @@
 ﻿
 import { Component, Input, OnChanges, Inject } from '@angular/core';
-import { Http } from '@angular/http';
 import { EventoServico } from '../../servicos/evento.servico';
+import { Http } from '@angular/http';
+
 import { RastreamentoServico } from '../../servicos/rastreamento.servico'
-import { MensagemServico } from '../../servicos/mensagem.servico';
+
 
 @Component({
     selector: 'timeline',
     template: require('./timeline.component.html'),
     styles: [require('./timeline.component.css')],
-    providers: [RastreamentoServico, EventoServico, { provide: 'IMensagemServico', useClass: MensagemServico }]
+    providers: [RastreamentoServico]
 
 })
 

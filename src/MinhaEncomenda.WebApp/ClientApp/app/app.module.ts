@@ -11,6 +11,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ToastyModule } from 'ng2-toasty';
 import { NgLoadingBarModule } from 'ng-loading-bar';
 import { ApiServico } from "./servicos/api.servico"
+import { EventoServico } from './servicos/evento.servico';
+import { MensagemServico } from './servicos/mensagem.servico';
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { ApiServico } from "./servicos/api.servico"
         HomeComponent,
         TimelineComponent
     ],
-    providers: [ApiServico]
+    providers: [ApiServico, EventoServico, { provide: 'IMensagemServico', useClass: MensagemServico }]
 })
 export class AppModule {
 }
